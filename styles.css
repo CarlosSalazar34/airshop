@@ -1,1 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
+html {
+    scroll-behavior: smooth;
+}
+
+.principal {
+    background: url(fondo.png) center;
+    height: 89vh;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    animation: blurAnimation 2s ease;
+
+}
+
+
+@keyframes blurAnimation {
+    from {
+        filter: blur(10px);
+        opacity: 0;
+        transform: translateY(20px);           
+    }
+    to {
+        filter: blur(0);
+        opacity: 1;
+        transform: translateY(0);           
+    }
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0 0 10px;
+
+}
+
+header div img {
+    object-fit: cover;
+    width: 75px;
+    height: 75px;
+
+}
+
+
+header div a {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    padding-bottom: .2rem;
+    transition: all .3s ease;
+    margin-left: 10px;
+}
+
+header div a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: all .3s ease;
+}
+
+header div button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 26px;
+    color: black;
+    margin-left: 0.5rem;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+header div button:hover {
+    transform: scale(1.2);
+}
+
+
+
+header div a:hover::after {
+    transform: scaleX(1);
+}
+
+header div a:hover {
+    transform: translateY(-6px);
+}
+
+
+header div button {
+    outline: none;
+    border-radius: 1rem;
+    background-color: transparent;
+    padding: .3rem;
+    border: none;
+    font-size: 26px;
+    margin-left: .3rem;
+    cursor: pointer;
+    color: black;
+}
+
+.search-box {
+    position: relative;
+    display: inline-block;
+}
+
+.search-box i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+    pointer-events: none;
+}
+
+.search-box input {
+    padding: 8px 8px 8px 30px;
+    border: 1px solid black;
+    border-radius: 7px;
+    outline: none;
+    width: 100px;
+    max-width: auto;
+    transition: all .3s ease;
+    z-index: 10;
+}
+
+
+h1 {
+    font-size: 4rem;
+    margin-left: 1rem;
+}
+
+.principal button {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    border: 1px solid black;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: transparent;
+    transition: all .3s ease;
+
+}
+
+.principal button:hover {
+    transform: scale(1.1);
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+.products {
+    height: 100vh;
+}
