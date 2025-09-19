@@ -11,3 +11,77 @@ inputSearch.addEventListener("focus", () => {
 inputSearch.addEventListener("blur", () => {
   inputSearch.style.width = "100px";
 });
+
+
+class Product{
+    constructor(image, title, description) {
+        this.image = image;
+        this.title = title;
+        this.description = description;
+    }
+    
+    update(container){
+        container.innerHTML +=`
+        <article class="product">
+            <img src="${this.image}" alt="image-product">
+            <h3>${this.title}</h3>
+            <p>${this.description}</p>
+        </article>
+        `
+    }
+}
+
+productOne = new Product("product-1.png", "HeadPhones 1", "Incredible sound packed in the smallest case we’ve ever made")
+productTwo = new Product("product-2.png", "HeadPhones 1", "Incredible sound packed in the smallest case we’ve ever made")
+productTree = new Product("product-3.png", "HeadPhones 1", "Incredible sound packed in the smallest case we’ve ever made")
+productFour = new Product("product-4.png", "HeadPhones 1", "Incredible sound packed in the smallest case we’ve ever made")
+
+const containerFavoriteProducts = document.querySelector(".products-favorites");
+
+productOne.update(containerFavoriteProducts);
+productTwo.update(containerFavoriteProducts);
+productTree.update(containerFavoriteProducts);
+productFour.update(containerFavoriteProducts);
+
+
+const products = document.querySelectorAll(".product");
+
+products.forEach((product)=>{
+    product.addEventListener("click", ()=>{
+        
+        const imageProduct = product.querySelector("img").src;
+        const titleProduct = product.querySelector("h3").textContent;
+        const detailsProduct = product.querySelector("p").textContent;
+
+        const sectionFavorites = document.querySelector("main");
+        sectionFavorites.classList.add("no-see");
+        setTimeout(()=>{
+            // sectionFavorites.style.height = "100px";
+            sectionFavorites.classList.remove("no-see");
+            sectionFavorites.innerHTML = "";
+            sectionFavorites.innerHTML += `
+            <section class="view-info">
+                <article>
+                        <img src="${imageProduct}" alt="image">
+                        <div>
+                            <h2>${titleProduct}</h2>
+                            <h3>${detailsProduct}</h3>
+                            <p>Color: purple</p>
+                            <div>
+                            <ul>
+                                <li class="red"></li>
+                                <li class="purple"></li>
+                                <li class="black"></li>
+                                <li class="white"></li>
+                            </ul>
+                            </div>
+                            <button class='add-to-favorite-btn'>ADD TO FAVORTE</button>
+                        </div>
+                </article>
+            </secrion>
+            `
+        }, 1000)
+        // const infoScreen = document.querySelector(".info-screen");
+        // infoScreen.style.visibility = 'visible';
+    })
+})
