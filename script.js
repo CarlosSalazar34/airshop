@@ -5,23 +5,23 @@ const containerSearch = document.querySelector(".search-box");
 const inputSearch = containerSearch.querySelector("input");
 
 inputSearch.addEventListener("focus", () => {
-  inputSearch.style.width = "150px";
+    inputSearch.style.width = "150px";
 });
 
 inputSearch.addEventListener("blur", () => {
-  inputSearch.style.width = "100px";
+    inputSearch.style.width = "100px";
 });
 
 
-class Product{
+class Product {
     constructor(image, title, description) {
         this.image = image;
         this.title = title;
         this.description = description;
     }
-    
-    update(container){
-        container.innerHTML +=`
+
+    update(container) {
+        container.innerHTML += `
         <article class="product">
             <img src="${this.image}" alt="image-product">
             <h3>${this.title}</h3>
@@ -43,45 +43,59 @@ productTwo.update(containerFavoriteProducts);
 productTree.update(containerFavoriteProducts);
 productFour.update(containerFavoriteProducts);
 
+const main = document.querySelector("main");
+
+const initialMainContent = main.innerHTML;
 
 const products = document.querySelectorAll(".product");
 
-products.forEach((product)=>{
-    product.addEventListener("click", ()=>{
-        
+products.forEach((product) => {
+    product.addEventListener("click", () => {
         const imageProduct = product.querySelector("img").src;
         const titleProduct = product.querySelector("h3").textContent;
         const detailsProduct = product.querySelector("p").textContent;
 
-        const sectionFavorites = document.querySelector("main");
-        sectionFavorites.classList.add("no-see");
-        setTimeout(()=>{
-            // sectionFavorites.style.height = "100px";
-            sectionFavorites.classList.remove("no-see");
-            sectionFavorites.innerHTML = "";
-            sectionFavorites.innerHTML += `
-            <section class="view-info">
-                <article>
-                        <img src="${imageProduct}" alt="image">
-                        <div>
-                            <h2>${titleProduct}</h2>
-                            <h3>${detailsProduct}</h3>
-                            <p>Color: purple</p>
-                            <div>
-                            <ul>
-                                <li class="red"></li>
-                                <li class="purple"></li>
-                                <li class="black"></li>
-                                <li class="white"></li>
-                            </ul>
-                            </div>
-                            <button class='add-to-favorite-btn'>ADD TO FAVORTE</button>
-                        </div>
-                </article>
-            </secrion>
-            `
-        }, 1000)
-        // const infoScreen = document.querySelector(".info-screen");
-        // infoScreen.style.visibility = 'visible';
-    })
-})
+        main.classList.add("no-see");
+        setTimeout(() => {
+            main.classList.remove("no-see");
+            main.innerHTML = `
+        <section class="view-info">
+            <div class="come-back-btn"><button>come back</button></div>
+            <article>
+                <img src="${imageProduct}" alt="image">
+                <div>
+                    <h2>${titleProduct}</h2>
+                    <h3>${detailsProduct}</h3>
+                    <p>Color: purple</p>
+                    <div>
+                        <ul>
+                            <li class="red"></li>
+                            <li class="purple"></li>
+                            <li class="black"></li>
+                            <li class="white"></li>
+                        </ul>
+                    </div>
+                    <button class='add-to-favorite-btn'>ADD TO FAVORITE</button>
+                </div>
+            </article>
+        </section>
+      `;
+
+        const comeBackButton = document.querySelector(".come-back-btn button");
+        comeBackButton.addEventListener("click", () => {
+        main.classList.add("no-see");
+        setTimeout(() => {
+        main.classList.remove("no-see");
+        main.innerHTML = initialMainContent;
+
+       const newProducts = document.querySelectorAll(".product");
+       newProducts.forEach((p) => {
+        p.addEventListener("click", () => {
+        location.reload();
+        });
+    });
+}, 1000);
+});
+}, 1000);
+});
+});

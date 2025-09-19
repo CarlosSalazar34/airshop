@@ -344,3 +344,22 @@ ul li {
     border-radius: 1rem;
     padding: 1rem;
 }
+
+.come-back-btn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1rem;
+    width: 100%;
+    margin-left: 1rem;
+}
+
+.come-back-btn button {
+    border-radius: 1rem;
+    padding: .4rem;
+    color: white;
+    background-color: black;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    
+}
