@@ -123,7 +123,7 @@ products.forEach((product) => {
 
         document.querySelector(".add-to-favorite-btn").addEventListener("click", () => {
             main.classList.add("no-see");
-            const originElement = event.currentTarget;
+            // const originElement = event.currentTarget;
             setTimeout(() => {
                 main.classList.remove("no-see");
                 main.innerHTML = initialMainContent;
@@ -158,4 +158,3 @@ products.forEach((product) => {
         }, 1000);
     });
 });
-
