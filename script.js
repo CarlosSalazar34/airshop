@@ -177,6 +177,8 @@ products.forEach((product) => {
                 </article>
             </section>
       `;
+        
+
 
     //   main.setAttribute("style", "overflow-y: auto;")
 
