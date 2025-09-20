@@ -13,7 +13,8 @@
 <body>
     <header>
         <div>
-            <a onclick="document.getElementById('general-products').scrollIntoView({behavior: 'smooth'})" style="cursor: pointer;" id="controller-button">shop</a>
+            <a onclick="document.getElementById('general-products').scrollIntoView({behavior: 'smooth'})"
+                style="cursor: pointer;" id="controller-button">shop</a>
         </div>
         <div>
             <img src="logo.png" alt="logo">
@@ -29,6 +30,20 @@
             <button class="profile-btn"><i class="fa-regular fa-user"></i></button>
             <dialog id="dialog-messages">
                 <button class="close-button">❌</button>
+
+                <div class="profile-user">
+                    <i class="fas fa-user-circle"></i>
+                    <div>
+                        <h2>Nombre del Usuario</h2>
+                        <p>@usuario123</p>
+                    </div>
+
+                    
+                </div>
+                <div class="configuration-user">
+                    <button class="edit-button">Editar</button>
+                    <button class="close-session-button">Cerrar sesión</button>
+                </div>
             </dialog>
 
         </div>

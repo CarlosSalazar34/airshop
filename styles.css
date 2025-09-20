@@ -12,7 +12,8 @@ html {
     scroll-behavior: smooth;
 }
 
-html, body {
+html,
+body {
     box-sizing: border-box;
 }
 
@@ -215,6 +216,59 @@ header div a {
     transition: all .3s ease;
     margin-left: 10px;
 }
+
+dialog {
+    scrollbar-width: none;
+}
+
+.profile-user, .configuration-user {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: #f1f1f1;
+    transition: all .3s ease;
+    height: auto;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: .5rem;
+    margin-top: 0.3rem;
+}
+
+
+.configuration-user button {
+    font-size: 1rem;
+    background-color: #555;
+    display: flex;
+    color: white;
+    width: 100%;
+    transition: all .3s ease;
+    padding: 1rem;
+}
+
+.configuration-user button:hover {
+    transform: scale(1.04);
+}
+
+
+
+
+.profile-user i {
+    font-size: 3rem;
+    color: black;
+}
+
+.profile-user h2 {
+    font-size: 1.2rem;
+    margin-bottom: .3rem;
+}
+
+.profile-user p {
+    font-size: .9rem;
+    color: #555;
+}
+
 
 header div a::after {
     content: "";
