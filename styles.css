@@ -629,3 +629,18 @@ ul li:hover {
 }
 
 /*END PRODUCTS*/
+
+footer {
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Nunito", sans-serif;
+    transition: all .3s ease;
+    
+}
+
+.removed-footer {
+    height: 0px;
+    transition: all .3s ease;
+}

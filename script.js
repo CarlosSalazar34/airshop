@@ -74,6 +74,7 @@ document.querySelector(".tabs-container").querySelectorAll("button").forEach(but
 
 
 const main = document.querySelector("main");
+const fotter = document.querySelector("footer");
 
 const initialMainContent = main.innerHTML;
 
@@ -88,6 +89,9 @@ products.forEach((product) => {
         main.classList.add("no-see");
         setTimeout(() => {
             main.classList.remove("no-see");
+            fotter.classList.add("removed-footer");
+            fotter.classList.add("no-see");
+            fotter.innerHTML = "";
             main.innerHTML = `
         <main>
             <section class="view-info">
