@@ -59,43 +59,59 @@ products.forEach((product) => {
         setTimeout(() => {
             main.classList.remove("no-see");
             main.innerHTML = `
-        <section class="view-info">
-            <div class="come-back-btn"><button>come back</button></div>
-            <article>
-                <img src="${imageProduct}" alt="image">
-                <div>
-                    <h2>${titleProduct}</h2>
-                    <h3>${detailsProduct}</h3>
-                    <p>Color: purple</p>
+        <main>
+            <section class="view-info">
+                <div class="come-back-btn"><button>come back</button></div>
+                <article>
+                    <img src="${imageProduct}" alt="image">
                     <div>
-                        <ul>
-                            <li class="red"></li>
-                            <li class="purple"></li>
-                            <li class="black"></li>
-                            <li class="white"></li>
-                        </ul>
+                        <h2>${titleProduct}</h2>
+                        <h3>${detailsProduct}</h3>
+                        <p>Color: purple</p>
+                        <div>
+                            <ul>
+                                <li class="red"></li>
+                                <li class="purple"></li>
+                                <li class="black"></li>
+                                <li class="white"></li>
+                            </ul>
+                        </div>
+                        <button class='add-to-favorite-btn'>ADD TO FAVORITE</button>
                     </div>
-                    <button class='add-to-favorite-btn'>ADD TO FAVORITE</button>
-                </div>
-            </article>
-        </section>
+                </article>
+            </section>
+        </main>
       `;
 
-        const comeBackButton = document.querySelector(".come-back-btn button");
-        comeBackButton.addEventListener("click", () => {
-        main.classList.add("no-see");
-        setTimeout(() => {
-        main.classList.remove("no-see");
-        main.innerHTML = initialMainContent;
+            document.querySelector(".add-to-favorite-btn").addEventListener("click", () => {
+                main.classList.add("no-see");
+                setTimeout(() => {
+                    main.classList.remove("no-see");
+                    main.innerHTML = initialMainContent;
+                    location.reload();
 
-       const newProducts = document.querySelectorAll(".product");
-       newProducts.forEach((p) => {
-        p.addEventListener("click", () => {
-        location.reload();
-        });
+                }, 1000)
+            })
+
+
+            const comeBackButton = document.querySelector(".come-back-btn button");
+            comeBackButton.addEventListener("click", () => {
+                main.classList.add("no-see");
+                setTimeout(() => {
+                    main.classList.remove("no-see");
+                    main.innerHTML = initialMainContent;
+                    location.reload();
+
+                    // const newProducts = document.querySelectorAll(".product");
+                    // newProducts.forEach((p) => {
+                    //     p.addEventListener("click", () => {
+                    //         location.reload();
+                    //     });
+                    // });
+
+                }, 1000);
+            });
+        }, 1000);
     });
-}, 1000);
 });
-}, 1000);
-});
-});
+
