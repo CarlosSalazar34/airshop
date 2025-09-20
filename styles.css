@@ -147,6 +147,7 @@ header{
 }
 /* login end */
 
+
 .principal {
     background: url(src/fondo_main.png) center;
     height: 89vh;
@@ -502,3 +503,14 @@ ul li {
     font-weight: bold;
     
 }
+
+/*PRODUCTS*/
+.products-title{
+    width: 224px;
+    height: 55px;
+    left: 609px;
+    top: 201px;
+    text-align: center;
+}
+
+/*END PRODUCTS*/
