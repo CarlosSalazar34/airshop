@@ -1,5 +1,68 @@
 console.log("hola muchachos :D");
 
+async function toggleUser(id) {
+    const ViewTransitionClass = 'vt-element-animation';
+    const ViewTransitionClassClosing = 'vt-element-animation-closing';
+    if (!id) {
+        const openDialog = document.querySelector('dialog[open]');
+        const originElement = document.querySelector("[origin-element]");
+
+        openDialog.style.viewTransitionName = 'vt-shared';
+        openDialog.style.viewTransitionClass = ViewTransitionClassClosing;
+
+        const ViewTransition = document.startViewTransition(() => {
+            originElement.style.viewTransitionName = 'vt-shared';
+            originElement.style.viewTransitionClass = ViewTransitionClassClosing;
+
+            openDialog.style.viewTransitionName = '';
+            openDialog.style.viewTransitionClass = '';
+
+
+            openDialog.close();
+
+        })
+
+        await ViewTransition.finished;
+
+        originElement.style.viewTransitionName = '';
+        originElement.style.viewTransitionClass = '';
+        // openDialog.close();
+        return false;
+    }
+
+    const dialog = document.getElementById(id);
+    const originElement = event.currentTarget;
+
+
+    dialog.style.viewTransitionName = 'vt-shared';
+    dialog.style.viewTransitionClass = ViewTransitionClass;
+
+    originElement.style.viewTransitionName = 'vt-shared';
+    originElement.style.viewTransitionClass = ViewTransitionClass;
+
+    originElement.setAttribute('origin-element', '');
+
+    const ViewTransition = document.startViewTransition(() => {
+        originElement.style.viewTransitionName = '';
+        originElement.style.viewTransitionClass = '';
+        dialog.showModal();
+    })
+
+    await ViewTransition.finished
+
+    dialog.style.viewTransitionName = '';
+    dialog.style.viewTransitionClass = '';
+
+}
+
+document.querySelector("dialog").querySelector(".close-button").addEventListener("click", ()=>{
+    toggleUser();
+})
+
+document.querySelector(".profile-btn").addEventListener("click", () => {
+    toggleUser("dialog-messages");
+})
+
 let favoriteProdcuts = JSON.parse(localStorage.getItem("favorites")) || [];
 console.log(localStorage.getItem("favorites"));
 console.log("Favoritos actuales:", favoriteProdcuts);
@@ -7,11 +70,11 @@ console.log("Favoritos actuales:", favoriteProdcuts);
 const containerSearch = document.querySelector(".search-box");
 const inputSearch = containerSearch.querySelector("input");
 
-document.addEventListener("DOMContentLoaded", ()=>{
+document.addEventListener("DOMContentLoaded", () => {
     const title = document.querySelector("h1");
     const titleText = "AirShop";
-    
-    for (let i = 0; i<titleText.length; i ++){
+
+    for (let i = 0; i < titleText.length; i++) {
         console.log(titleText[i]);
         title.innerHTML += `<span>${titleText[i]}</span>`;
     };
@@ -66,7 +129,7 @@ productFour.update(generalProductsContainer);
 
 
 document.querySelector(".tabs-container").querySelectorAll("button").forEach(button => {
-    button.addEventListener("click", ()=>{
+    button.addEventListener("click", () => {
         button.parentElement.querySelectorAll("button").forEach((btn) => { btn.classList.remove("category-selected"); })
         button.classList.add("category-selected");
     })
@@ -90,10 +153,9 @@ products.forEach((product) => {
         setTimeout(() => {
             main.classList.remove("no-see");
             fotter.classList.add("removed-footer");
-            fotter.classList.add("no-see");
+            // fotter.classList.add("no-see");
             fotter.innerHTML = "";
             main.innerHTML = `
-        <main>
             <section class="view-info">
                 <div class="come-back-btn"><button>come back</button></div>
                 <article>
@@ -114,41 +176,42 @@ products.forEach((product) => {
                     </div>
                 </article>
             </section>
-        </main>
       `;
-        
-    document.querySelectorAll("ul li").forEach((item)=>{
-        item.addEventListener("click", ()=>{
-            item.parentElement.querySelectorAll("li").forEach(li => li.classList.remove("selected"));
-            item.classList.toggle("selected");
-        })
-        
-    })
 
-        document.querySelector(".add-to-favorite-btn").addEventListener("click", () => {
-            main.classList.add("no-see");
-            // const originElement = event.currentTarget;
-            setTimeout(() => {
-                main.classList.remove("no-see");
-                main.innerHTML = initialMainContent;
+    //   main.setAttribute("style", "overflow-y: auto;")
 
-                if (!favoriteProdcuts.includes(titleProduct)){
-                    favoriteProdcuts.push(titleProduct);
-                    localStorage.setItem("favorites", JSON.stringify(favoriteProdcuts));
-                };
-                location.reload();
-                
-            }, 1000)
-        })
+            document.querySelectorAll("ul li").forEach((item) => {
+                item.addEventListener("click", () => {
+                    item.parentElement.querySelectorAll("li").forEach(li => li.classList.remove("selected"));
+                    item.classList.toggle("selected");
+                })
+
+            })
+
+            document.querySelector(".add-to-favorite-btn").addEventListener("click", () => {
+                main.classList.add("no-see");
+                // const originElement = event.currentTarget;
+                setTimeout(() => {
+                    main.classList.remove("no-see");
+                    main.innerHTML = initialMainContent;
+
+                    if (!favoriteProdcuts.includes(titleProduct)) {
+                        favoriteProdcuts.push(titleProduct);
+                        localStorage.setItem("favorites", JSON.stringify(favoriteProdcuts));
+                    };
+                    location.reload();
+
+                }, 1000)
+            })
 
 
-        const comeBackButton = document.querySelector(".come-back-btn button");
-        comeBackButton.addEventListener("click", () => {
-        main.classList.add("no-see");
-        setTimeout(() => {
-        main.classList.remove("no-see");
-        main.innerHTML = initialMainContent;
-        location.reload();
+            const comeBackButton = document.querySelector(".come-back-btn button");
+            comeBackButton.addEventListener("click", () => {
+                main.classList.add("no-see");
+                setTimeout(() => {
+                    main.classList.remove("no-see");
+                    main.innerHTML = initialMainContent;
+                    location.reload();
 
                     // const newProducts = document.querySelectorAll(".product");
                     // newProducts.forEach((p) => {
