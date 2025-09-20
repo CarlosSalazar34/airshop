@@ -1,5 +1,26 @@
+
 console.log("hola muchachos :D");
 
+
+///////////////////////
+//login
+
+window.addEventListener("DOMContentLoaded", function() {
+    document.querySelector(".login-container").style.display = "flex";
+    document.querySelector(".principal").style.display = "none";
+    document.querySelector(".favorites").style.display = "none";
+    document.querySelector("header").style.display = "none";
+});
+
+function login(event) {
+    event.preventDefault();
+    document.querySelector(".login-container").style.display = "none";
+    document.querySelector(".principal").style.display = "block";
+    document.querySelector(".favorites").style.display = "block";
+    document.querySelector("header").style.display = "flex";
+}
+
+///////////////////////
 
 const containerSearch = document.querySelector(".search-box");
 const inputSearch = containerSearch.querySelector("input");
