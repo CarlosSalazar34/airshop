@@ -23,7 +23,9 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" placeholder="Buscar...">
             </div>
-            <button class="like-btn" onclick="document.getElementById('favorites').scrollIntoView({behavior: 'smooth'})"><i class="fa-regular fa-heart"></i></button>
+            <button class="like-btn"
+                onclick="document.getElementById('favorites').scrollIntoView({behavior: 'smooth'})"><i
+                    class="fa-regular fa-heart"></i></button>
             <button class="profile-btn"><i class="fa-regular fa-user"></i></button>
 
         </div>
@@ -34,7 +36,7 @@
 
         <section class="principal">
             <div>
-                <h1>AirShop</h1>
+                <h1></h1>
                 <button onclick="document.getElementById('general-products').scrollIntoView({behavior: 'smooth'})">Shop
                     Now</button>
             </div>
@@ -46,12 +48,26 @@
         <!-- CHICOS PONGAN ACÁ SUS SECCIONES PORFA -->
 
         <section class="general-products" id="general-products">
+            <h2>
+                PRODUCTS
+            </h2>
+
+            <div class="tabs-container">
+                <button class="category-selected">FEATURES</button>
+                <button>EARBUDS</button>
+                <button>HEADPHONES</button>
+                <button>GAMING</button>
+                <button>SPEAKERS</button>
+            </div>
+            <div class="border"></div>
+
+            <div class="general-products-container"></div>
 
         </section>
-        
+
         <!-- CHICOS PONGAN ACÁ SUS SECCIONES PORFA -->
         <!-- DESDE AQUI ES MI CODIGO DE LA SECTION DE FAVORITOS ATT: Carlos Salazar -->
-        <section class="favorites" id="favorites"> 
+        <section class="favorites" id="favorites">
             <h2 class="title-favorites">FAVORITE PRODUCTS</h2>
 
             <div class="products-favorites">

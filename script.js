@@ -7,6 +7,17 @@ console.log("Favoritos actuales:", favoriteProdcuts);
 const containerSearch = document.querySelector(".search-box");
 const inputSearch = containerSearch.querySelector("input");
 
+document.addEventListener("DOMContentLoaded", ()=>{
+    const title = document.querySelector("h1");
+    const titleText = "AirShop";
+    
+    for (let i = 0; i<titleText.length; i ++){
+        console.log(titleText[i]);
+        title.innerHTML += `<span>${titleText[i]}</span>`;
+    };
+})
+
+
 inputSearch.addEventListener("focus", () => {
     inputSearch.style.width = "150px";
 });
@@ -45,6 +56,22 @@ productOne.update(containerFavoriteProducts);
 productTwo.update(containerFavoriteProducts);
 productTree.update(containerFavoriteProducts);
 productFour.update(containerFavoriteProducts);
+
+const generalProductsContainer = document.querySelector(".general-products-container");
+
+productOne.update(generalProductsContainer);
+productTwo.update(generalProductsContainer);
+productTree.update(generalProductsContainer);
+productFour.update(generalProductsContainer);
+
+
+document.querySelector(".tabs-container").querySelectorAll("button").forEach(button => {
+    button.addEventListener("click", ()=>{
+        button.parentElement.querySelectorAll("button").forEach((btn) => { btn.classList.remove("category-selected"); })
+        button.classList.add("category-selected");
+    })
+})
+
 
 const main = document.querySelector("main");
 
@@ -104,9 +131,9 @@ products.forEach((product) => {
                 if (!favoriteProdcuts.includes(titleProduct)){
                     favoriteProdcuts.push(titleProduct);
                     localStorage.setItem("favorites", JSON.stringify(favoriteProdcuts));
-                    location.reload();
                 };
-
+                location.reload();
+                
             }, 1000)
         })
 
