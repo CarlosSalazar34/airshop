@@ -130,10 +130,10 @@ class Product {
     }
 }
 
-productOne = new Product("product-1.png", "HeadPhones 1", "Incredible sound packed in the smallest case we’ve ever made")
-productTwo = new Product("product-2.png", "HeadPhones 2", "Incredible sound packed in the smallest case we’ve ever made")
-productTree = new Product("product-3.png", "HeadPhones 3", "Incredible sound packed in the smallest case we’ve ever made")
-productFour = new Product("product-4.png", "HeadPhones 4", "Incredible sound packed in the smallest case we’ve ever made")
+productOne = new Product("src/audif1.png", "HeadPhones 1", "Incredible sound packed in the smallest case we’ve ever made")
+productTwo = new Product("src/audif2.png", "HeadPhones 2", "Incredible sound packed in the smallest case we’ve ever made")
+productTree = new Product("src/audif3.png", "HeadPhones 3", "Incredible sound packed in the smallest case we’ve ever made")
+productFour = new Product("src/audif4.png", "HeadPhones 4", "Incredible sound packed in the smallest case we’ve ever made")
 
 const containerFavoriteProducts = document.querySelector(".products-favorites");
 
