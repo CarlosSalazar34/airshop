@@ -172,6 +172,8 @@ products.forEach((product) => {
         const detailsProduct = product.querySelector("p").textContent;
 
         main.classList.add("no-see");
+        fotter.classList.add("no-see");
+        // fotter.classList.add("removed-footer");
         setTimeout(() => {
             main.classList.remove("no-see");
             fotter.classList.add("removed-footer");
@@ -214,6 +216,7 @@ products.forEach((product) => {
 
             document.querySelector(".add-to-favorite-btn").addEventListener("click", () => {
                 main.classList.add("no-see");
+                document.querySelector("header").classList.add("no-see");
                 // const originElement = event.currentTarget;
                 setTimeout(() => {
                     main.classList.remove("no-see");
