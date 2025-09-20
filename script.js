@@ -1,5 +1,27 @@
 console.log("hola muchachos :D");
 
+document.addEventListener("DOMContentLoaded", () => {
+    anime({
+        targets: "header",
+        opacity: [0, 1],
+        translateY: [-50, 0],
+        scale: [0.95, 1],
+        easing: "easeOutExpo",
+        duration: 1500
+    });
+
+    anime({
+        targets: "header div",
+        opacity: [0, 1],
+        translateY: [20, 0],
+        delay: anime.stagger(150, { start: 500 }), 
+        easing: "easeOutBack",
+        duration: 1000
+    });
+});
+
+
+
 async function toggleUser(id) {
     const ViewTransitionClass = 'vt-element-animation';
     const ViewTransitionClassClosing = 'vt-element-animation-closing';
