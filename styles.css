@@ -188,6 +188,10 @@ h1 {
     border: none;
 }
 
+.general-products {
+    height: 100vh;
+}
+
 .favorites {
     height: 100vh;
     background-color: #BFBFC0;
@@ -310,6 +314,16 @@ ul {
 ul li { 
     margin-top: 1rem;
     margin-bottom: 2rem;
+    transition: all .3s ease;
+}
+
+.selected {
+    box-shadow: 0 0 20px black;
+}
+
+
+ul li:hover{
+    transform: scale(1.1);
 }
 
 .red {

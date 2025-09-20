@@ -1,5 +1,8 @@
 console.log("hola muchachos :D");
 
+let favoriteProdcuts = JSON.parse(localStorage.getItem("favorites")) || [];
+console.log(localStorage.getItem("favorites"));
+console.log("Favoritos actuales:", favoriteProdcuts);
 
 const containerSearch = document.querySelector(".search-box");
 const inputSearch = containerSearch.querySelector("input");
@@ -32,9 +35,9 @@ class Product {
 }
 
 productOne = new Product("product-1.png", "HeadPhones 1", "Incredible sound packed in the smallest case we’ve ever made")
-productTwo = new Product("product-2.png", "HeadPhones 1", "Incredible sound packed in the smallest case we’ve ever made")
-productTree = new Product("product-3.png", "HeadPhones 1", "Incredible sound packed in the smallest case we’ve ever made")
-productFour = new Product("product-4.png", "HeadPhones 1", "Incredible sound packed in the smallest case we’ve ever made")
+productTwo = new Product("product-2.png", "HeadPhones 2", "Incredible sound packed in the smallest case we’ve ever made")
+productTree = new Product("product-3.png", "HeadPhones 3", "Incredible sound packed in the smallest case we’ve ever made")
+productFour = new Product("product-4.png", "HeadPhones 4", "Incredible sound packed in the smallest case we’ve ever made")
 
 const containerFavoriteProducts = document.querySelector(".products-favorites");
 
@@ -82,25 +85,39 @@ products.forEach((product) => {
             </section>
         </main>
       `;
+        
+    document.querySelectorAll("ul li").forEach((item)=>{
+        item.addEventListener("click", ()=>{
+            item.parentElement.querySelectorAll("li").forEach(li => li.classList.remove("selected"));
+            item.classList.toggle("selected");
+        })
+        
+    })
 
-            document.querySelector(".add-to-favorite-btn").addEventListener("click", () => {
-                main.classList.add("no-see");
-                setTimeout(() => {
-                    main.classList.remove("no-see");
-                    main.innerHTML = initialMainContent;
+        document.querySelector(".add-to-favorite-btn").addEventListener("click", () => {
+            main.classList.add("no-see");
+            const originElement = event.currentTarget;
+            setTimeout(() => {
+                main.classList.remove("no-see");
+                main.innerHTML = initialMainContent;
+
+                if (!favoriteProdcuts.includes(titleProduct)){
+                    favoriteProdcuts.push(titleProduct);
+                    localStorage.setItem("favorites", JSON.stringify(favoriteProdcuts));
                     location.reload();
+                };
 
-                }, 1000)
-            })
+            }, 1000)
+        })
 
 
-            const comeBackButton = document.querySelector(".come-back-btn button");
-            comeBackButton.addEventListener("click", () => {
-                main.classList.add("no-see");
-                setTimeout(() => {
-                    main.classList.remove("no-see");
-                    main.innerHTML = initialMainContent;
-                    location.reload();
+        const comeBackButton = document.querySelector(".come-back-btn button");
+        comeBackButton.addEventListener("click", () => {
+        main.classList.add("no-see");
+        setTimeout(() => {
+        main.classList.remove("no-see");
+        main.innerHTML = initialMainContent;
+        location.reload();
 
                     // const newProducts = document.querySelectorAll(".product");
                     // newProducts.forEach((p) => {
