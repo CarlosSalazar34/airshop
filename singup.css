@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    background-color: #fafafa;
+    color: #333;
+    overflow-y: hidden;
+}
+
+
+.signup-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.signup-image {
+    flex: 1;
+    display: flex;
+}
+
+.signup-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.signup-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 60px;
+    background-color: #fafafa;
+}
+
+.signup-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.signup-subtitle {
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+
+.signup-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.signup-form label {
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.signup-form input[type="email"],
+.signup-form input[type="text"],
+.signup-form input[type="password"] {
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
+    transition: border-color 0.3s;
+}
+
+.signup-form input:focus {
+    border-color: #666;
+    outline: none;
+}
+
+.signup-btn {
+    padding: 14px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+    align-self: flex-start;
+}
+
+.signup-btn:hover {
+    background-color: #555;
+}
+
+/* --- RESPONSIVE --- */
+
+/* Tablets */
+@media (max-width: 1024px) {
+
+    .signup-container {
+        flex-direction: column;
+    }
+
+    .signup-image {
+        height: 250px;
+        display: none;
+    }
+
+    .signup-form {
+        padding: 30px 20px;
+    }
+
+    .signup-title {
+        font-size: 2rem;
+    }
+
+    .signup-subtitle {
+        font-size: 0.95rem;
+    }
+}
+
+/* Móviles */
+@media (max-width: 600px) {
+    .signup-form {
+        padding: 20px 15px;
+    }
+
+    .signup-title {
+        font-size: 1.8rem;
+    }
+
+    .signup-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
