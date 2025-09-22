@@ -19,6 +19,20 @@ console.log("hola muchachos :D");
 
 ///////////////////////
 
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    const queryStrings = window.location.search;
+    const params = new URLSearchParams(queryStrings);
+    const userNameData = params.get("email");    
+    const containerUserInformation = document.querySelector(".profile-user");
+    containerUserInformation.querySelector("h2").textContent = userNameData.replace("@gmail.com", "");
+
+})
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
     anime({
         targets: "header",
