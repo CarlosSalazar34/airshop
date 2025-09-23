@@ -172,12 +172,12 @@ productTwo = new Product("src/audif2.png", "HeadPhones 2", "Incredible sound pac
 productTree = new Product("src/audif3.png", "HeadPhones 3", "Incredible sound packed in the smallest case we’ve ever made")
 productFour = new Product("src/audif4.png", "HeadPhones 4", "Incredible sound packed in the smallest case we’ve ever made")
 
-const containerFavoriteProducts = document.querySelector(".products-favorites");
+// const containerFavoriteProducts = document.querySelector(".products-favorites");
 
-productOne.update(containerFavoriteProducts);
-productTwo.update(containerFavoriteProducts);
-productTree.update(containerFavoriteProducts);
-productFour.update(containerFavoriteProducts);
+// productOne.update(containerFavoriteProducts);
+// productTwo.update(containerFavoriteProducts);
+// productTree.update(containerFavoriteProducts);
+// productFour.update(containerFavoriteProducts);
 
 const generalProductsContainer = document.querySelector(".general-products-container");
 
