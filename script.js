@@ -25,7 +25,7 @@ document.querySelector("#controller-button").addEventListener(()=>{
 
 document.querySelector(".like-btn").addEventListener(()=>{
     document.getElementById('favorites').scrollIntoView({behavior: 'smooth'})
-})
+});
 
 document.addEventListener("DOMContentLoaded", ()=>{
     const queryStrings = window.location.search;
