@@ -19,6 +19,13 @@ console.log("hola muchachos :D");
 
 ///////////////////////
 
+document.querySelector("#controller-button").addEventListener(()=>{
+    document.getElementById('general-products').scrollIntoView({behavior: 'smooth'})
+});
+
+document.querySelector(".like-btn").addEventListener(()=>{
+    document.getElementById('favorites').scrollIntoView({behavior: 'smooth'})
+})
 
 document.addEventListener("DOMContentLoaded", ()=>{
     const queryStrings = window.location.search;
