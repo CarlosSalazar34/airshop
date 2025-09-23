@@ -30,9 +30,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
 })
 
 
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
     anime({
         targets: "header",
