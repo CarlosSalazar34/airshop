@@ -1,23 +1,9 @@
-console.log("hola muchachos :D");
 
-//login
-
-// window.addEventListener("DOMContentLoaded", function() {
-//     document.querySelector(".login-container").style.display = "flex";
-//     document.querySelector(".principal").style.display = "none";
-//     document.querySelector(".favorites").style.display = "none";
-//     document.querySelector("header").style.display = "none";
+// document.addEventListener("DOMContentLoaded", () => {
+//     if (!document.cookie.split(";").some(cookie => cookie.trim().startsWith("email="))) {
+//         window.location.href = "login.html";
+//     }
 // });
-
-// function login(event) {
-//     event.preventDefault();
-//     document.querySelector(".login-container").style.display = "none";
-//     document.querySelector(".principal").style.display = "block";
-//     document.querySelector(".favorites").style.display = "block";
-//     document.querySelector("header").style.display = "flex";
-// }
-
-///////////////////////
 
 
 document.addEventListener("DOMContentLoaded", ()=>{
@@ -26,10 +12,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const userNameData = params.get("email");    
     const containerUserInformation = document.querySelector(".profile-user");
     containerUserInformation.querySelector("h2").textContent = userNameData.replace("@gmail.com", "");
-
 })
-
-
 
 
 
@@ -312,28 +295,45 @@ function registerUser(event){
 function getCookie(name) {
     let cookieArr = document.cookie.split(";");
     for (let i = 0; i < cookieArr.length; i++) {
-        let cookie = cookieArr[i].trim();  //trim es para eliminar espacios
-        let parts = cookie.split(";");
-        let cookieName = parts[0];
-        let cookieValue = parts[1];
-        if (cookieName === name) {
-            return cookieValue;
+        let cookiePair = cookieArr[i].split("=");
+        if (cookiePair[0].trim() === name) {
+            return cookiePair[1];
         }
     }
     return "";
 }
 
 function loginUser(event){
-    event.preventDefault();                                      // Evita recarga de la página
+    event.preventDefault();
     let email = document.getElementById("email").value;
-    
     let saveEmail = getCookie("email");
+    console.log("Ingresado:", email, "Registrado:", saveEmail);
 
     if(email === saveEmail){
-        alert("Inicio de sesión exitoso");
-        window.location.href = "index.html" ;      
+        alert("Log in successful");
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 1000);
     } else {
-        alert("Email no registrado. Por favor, regístrese primero.");
-        window.location.href = "signup.html";
+        console.log("DEBUG: No coincide ->", email, saveEmail);
+        alert("Email not registered. Please sign up first.");
+    }
+}
+
+
+//USER
+class User {
+    constructor(username, email, favorites) {
+        this.username = username;
+        this.email = email;
+        this.favorites = favorites;
+    }
+
+    addFavorite(product) {
+
+    }
+
+    showFavorites() {
+        console.log("Favorites:", this.favorites);
     }
 }
