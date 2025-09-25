@@ -153,12 +153,12 @@ productTwo = new Product("src/audif2.png", "HeadPhones 2", "Incredible sound pac
 productTree = new Product("src/audif3.png", "HeadPhones 3", "Incredible sound packed in the smallest case we’ve ever made")
 productFour = new Product("src/audif4.png", "HeadPhones 4", "Incredible sound packed in the smallest case we’ve ever made")
 
-const containerFavoriteProducts = document.querySelector(".products-favorites");
+// const containerFavoriteProducts = document.querySelector(".products-favorites");
 
-productOne.update(containerFavoriteProducts);
-productTwo.update(containerFavoriteProducts);
-productTree.update(containerFavoriteProducts);
-productFour.update(containerFavoriteProducts);
+// productOne.update(containerFavoriteProducts);
+// productTwo.update(containerFavoriteProducts);
+// productTree.update(containerFavoriteProducts);
+// productFour.update(containerFavoriteProducts);
 
 const generalProductsContainer = document.querySelector(".general-products-container");
 
@@ -272,66 +272,22 @@ products.forEach((product) => {
 });
 
 
-//////Cookies
-// //////SIGN UP
-// function setCookie(name, value) {
-//     let date = new Date();
-//     date.setTime(date.getTime() + (30 * 24 * 60 * 60 * 1000));
-//     let expires = "expires=" + date.toUTCString();
-//     document.cookie = `${name}=${value};${expires};path=/`;
-// }
-
-// function registerUser(event){
-//     event.preventDefault();                                      // Evita recarga de la página
-//     let username = document.getElementById("username").value;
-//     let email = document.getElementById("email").value;
-    
-//     setCookie("username", username);
-//     setCookie("email", email);
-    
-//     alert("Usuario registrado exitosamente");
-//     window.location.href = "login.html";                         // Redirige a login.html
-// }
-
-// //////LOGIN
-// function getCookie(name) {
-//     let cookieArr = document.cookie.split(";");
-//     for (let i = 0; i < cookieArr.length; i++) {
-//         let cookiePair = cookieArr[i].split("=");
-//         if (cookiePair[0].trim() === name) {
-//             return cookiePair[1];
-//         }
-//     }
-//     return "";
-// }
-
-// function loginUser(event){
-//     event.preventDefault();
-//     let email = document.getElementById("email").value;
-//     let saveEmail = getCookie("email");
-//     console.log("Ingresado:", email, "Registrado:", saveEmail);
-
-//     if(email === saveEmail){
-//         alert("Log in successful");
-//         setTimeout(() => {
-//             window.location.href = "index.html";
-//         }, 1000);
-//     } else {
-//         console.log("DEBUG: No coincide ->", email, saveEmail);
-//         alert("Email not registered. Please sign up first.");
-//     }
-// }
-
-
 //USER
 class User {
-    constructor(username, email, favorites) {
+    constructor(username, email) {
         this.username = username;
         this.email = email;
-        this.favorites = favorites;
+        this.favorites = [];
     }
 
+    // products-favorites nombre de la clase de productos favoritos
+
     addFavorite(product) {
+        const favoriteProdcuts = document.querySelector(".products-favorites");
+
+        favoriteProdcuts.innerHTML += `
+        
+        `;
 
     }
 
@@ -339,3 +295,4 @@ class User {
         console.log("Favorites:", this.favorites);
     }
 }
+

@@ -1,3 +1,4 @@
+
 //////SIGN UP
 function setCookie(name, value) {
     let date = new Date();
