@@ -285,3 +285,55 @@ products.forEach((product) => {
         }, 1000);
     });
 });
+
+
+//////Cookies
+//////SIGN UP
+function setCookie(name, value) {
+    let date = new Date();
+    date.setTime(date.getTime() + (30 * 24 * 60 * 60 * 1000));
+    let expires = "expires=" + date.toUTCString();
+    document.cookie = `${name}=${value};${expires};path=/`;
+}
+
+function registerUser(event){
+    event.preventDefault();                                      // Evita recarga de la página
+    let username = document.getElementById("username").value;
+    let email = document.getElementById("email").value;
+    
+    setCookie("username", username);
+    setCookie("email", email);
+    
+    alert("Usuario registrado exitosamente");
+    window.location.href = "login.html";                         // Redirige a login.html
+}
+
+//////LOGIN
+function getCookie(name) {
+    let cookieArr = document.cookie.split(";");
+    for (let i = 0; i < cookieArr.length; i++) {
+        let cookie = cookieArr[i].trim();  //trim es para eliminar espacios
+        let parts = cookie.split(";");
+        let cookieName = parts[0];
+        let cookieValue = parts[1];
+        if (cookieName === name) {
+            return cookieValue;
+        }
+    }
+    return "";
+}
+
+function loginUser(event){
+    event.preventDefault();                                      // Evita recarga de la página
+    let email = document.getElementById("email").value;
+    
+    let saveEmail = getCookie("email");
+
+    if(email === saveEmail){
+        alert("Inicio de sesión exitoso");
+        window.location.href = "index.html" ;      
+    } else {
+        alert("Email no registrado. Por favor, regístrese primero.");
+        window.location.href = "signup.html";
+    }
+}
