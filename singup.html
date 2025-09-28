@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>signup</title>
     <link rel="stylesheet" href="singup.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 </head>
 
 <body>
@@ -16,7 +17,7 @@
         <div class="signup-form">
             <h2 class="signup-title">Sign up</h2>
             <p class="signup-subtitle">Already have an account? <a href="login.html">Log in</a></p>
-            <form>
+            <form onsubmit="registerUser(event)">
                 <div>
                     <label class="username-label" for="username">Username</label>
                     <input type="text" id="username" name="username" required>
@@ -33,6 +34,7 @@
             </form>
         </div>
     </main>
+    <script src="login.js"></script>
 </body>
 
 </html>

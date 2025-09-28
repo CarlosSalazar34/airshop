@@ -1,40 +1,40 @@
-console.log("hola muchachos :D");
+function getCookie(name) {
+    let cookieArr = document.cookie.split(";");
+    for (let i = 0; i < cookieArr.length; i++) {
+        let cookiePair = cookieArr[i].split("=");
+        if (cookiePair[0].trim() === name) {
+            return cookiePair[1];
+        }
+    }
+    return "";
+}
 
-//login
-
-// window.addEventListener("DOMContentLoaded", function() {
-//     document.querySelector(".login-container").style.display = "flex";
-//     document.querySelector(".principal").style.display = "none";
-//     document.querySelector(".favorites").style.display = "none";
-//     document.querySelector("header").style.display = "none";
-// });
-
-// function login(event) {
-//     event.preventDefault();
-//     document.querySelector(".login-container").style.display = "none";
-//     document.querySelector(".principal").style.display = "block";
-//     document.querySelector(".favorites").style.display = "block";
-//     document.querySelector("header").style.display = "flex";
-// }
-
-///////////////////////
-
-document.querySelector("#controller-button").addEventListener(()=>{
-    document.getElementById('general-products').scrollIntoView({behavior: 'smooth'})
+document.addEventListener("DOMContentLoaded", () => {
+    const username = getCookie("username");
+    if (username) {
+        const profileUser = document.querySelector(".profile-user h2");
+        profileUser.textContent = username;
+    }
 });
 
-document.querySelector(".like-btn").addEventListener(()=>{
-    document.getElementById('favorites').scrollIntoView({behavior: 'smooth'})
+
+document.addEventListener("DOMContentLoaded", () => {
+    if (!document.cookie.split(";").some(cookie => cookie.trim().startsWith("email="))) {
+        window.location.href = "login.html";
+    }
 });
 
-document.addEventListener("DOMContentLoaded", ()=>{
-    const queryStrings = window.location.search;
-    const params = new URLSearchParams(queryStrings);
-    const userNameData = params.get("email");    
-    const containerUserInformation = document.querySelector(".profile-user");
-    containerUserInformation.querySelector("h2").textContent = userNameData.replace("@gmail.com", "");
 
-})
+
+
+// document.addEventListener("DOMContentLoaded", ()=>{
+//     const queryStrings = window.location.search;
+//     const params = new URLSearchParams(queryStrings);
+//     const userNameData = params.get("email");    
+//     const containerUserInformation = document.querySelector(".profile-user");
+//     containerUserInformation.querySelector("h2").textContent = userNameData.replace("@gmail.com", "");
+// })
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -237,7 +237,7 @@ products.forEach((product) => {
                     </div>
                 </article>
             </section>
-      `;
+    `;
         
 
 
@@ -289,3 +289,29 @@ products.forEach((product) => {
         }, 1000);
     });
 });
+
+
+//USER
+class User {
+    constructor(username, email) {
+        this.username = username;
+        this.email = email;
+        this.favorites = [];
+    }
+
+    // products-favorites nombre de la clase de productos favoritos
+
+    addFavorite(product) {
+        const favoriteProdcuts = document.querySelector(".products-favorites");
+
+        favoriteProdcuts.innerHTML += `
+        
+        `;
+
+    }
+
+    showFavorites() {
+        console.log("Favorites:", this.favorites);
+    }
+}
+
