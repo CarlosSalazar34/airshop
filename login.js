@@ -15,7 +15,7 @@ function registerUser(event){
     setCookie("username", username);
     setCookie("email", email);
     
-    alert("Usuario registrado exitosamente");
+    alert("User registered successfully");
     window.location.href = "login.html";                         // Redirige a login.html
 }
 
@@ -35,6 +35,7 @@ function loginUser(event){
     event.preventDefault();
     let email = document.getElementById("email").value;
     let saveEmail = getCookie("email");
+    let username = getCookie("username");
     console.log("Ingresado:", email, "Registrado:", saveEmail);
 
     if(email === saveEmail){
@@ -43,7 +44,7 @@ function loginUser(event){
             window.location.href = "index.html";
         }, 1000);
     } else {
-        console.log("DEBUG: No coincide ->", email, saveEmail);
+        console.log("No coincide ->", email, saveEmail);
         alert("Email not registered. Please sign up first.");
     }
 }

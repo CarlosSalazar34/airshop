@@ -1,3 +1,22 @@
+function getCookie(name) {
+    let cookieArr = document.cookie.split(";");
+    for (let i = 0; i < cookieArr.length; i++) {
+        let cookiePair = cookieArr[i].split("=");
+        if (cookiePair[0].trim() === name) {
+            return cookiePair[1];
+        }
+    }
+    return "";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const username = getCookie("username");
+    if (username) {
+        const profileUser = document.querySelector(".profile-user h2");
+        profileUser.textContent = username;
+    }
+});
+
 
 document.addEventListener("DOMContentLoaded", () => {
     if (!document.cookie.split(";").some(cookie => cookie.trim().startsWith("email="))) {
