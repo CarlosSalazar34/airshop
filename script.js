@@ -122,9 +122,9 @@ document.querySelector(".profile-btn").addEventListener("click", () => {
     toggleUser("dialog-messages");
 })
 
-let favoriteProdcuts = JSON.parse(localStorage.getItem("favorites")) || [];
-console.log(localStorage.getItem("favorites"));
-console.log("Favoritos actuales:", favoriteProdcuts);
+// let favoriteProdcuts = JSON.parse(localStorage.getItem("favorites")) || [];
+// console.log(localStorage.getItem("favorites"));
+// console.log("Favoritos actuales:", favoriteProdcuts);
 
 const containerSearch = document.querySelector(".search-box");
 const inputSearch = containerSearch.querySelector("input");
@@ -197,7 +197,7 @@ document.querySelector(".tabs-container").querySelectorAll("button").forEach(but
 
 const main = document.querySelector("main");
 const fotter = document.querySelector("footer");
-const header = document.querySelector("header");    
+const header = document.querySelector("header");
 
 const initialMainContent = main.innerHTML;
 
@@ -277,17 +277,17 @@ products.forEach((product) => {
                 // document.querySelector("header").classList.add("no-see");
                 // const originElement = event.currentTarget;
                 newButton.classList.add("no-see");
-                user.favorites.push({
-                    image: imageProduct,
-                    title: titleProduct,
-                    description: detailsProduct
-                });
+                // user.favorites.push({
+                //     image: imageProduct,
+                //     title: titleProduct,
+                //     description: detailsProduct
+                // });
+                user.addFavorite(imageProduct, titleProduct, detailsProduct);
+                user.updateFavorite();
 
-                user.addFavorite();
-                
                 console.log("Favoritos del usuario:", user.favorites);
-                
-                
+
+
 
                 setTimeout(() => {
                     sections.forEach(section => {
@@ -376,6 +376,8 @@ products.forEach((product) => {
 
 
 //USER
+const favorites = document.querySelector(".products-favorites");
+
 class User {
     constructor(username, email) {
         this.username = username;
@@ -383,24 +385,33 @@ class User {
         this.favorites = [];
     }
 
-    // products-favorites nombre de la clase de productos favoritos
+    addFavorite(image, title, description) {
+        const exists = this.favorites.some(p => p.title === title);
+        if (!exists) {
+            this.favorites.push({ image, title, description });
+        }
+    }
 
-    addFavorite() {
-        const favorites = document.querySelector(".products-favorites");
+    updateFavorite() {
         favorites.innerHTML = "";
         this.favorites.forEach(product => {
             favorites.innerHTML += `
             <article class="product">
-            <img src="${product.image}" alt="image-product">
-            <h3>${product.title}</h3>
-            <p>${product.description}</p>
+                <img src="${product.image}" alt="image-product">
+                <h3>${product.title}</h3>
+                <p>${product.description}</p>
             </article>
-            `
+        `;
         });
+
+        // if (favorites.length > 1) {
+        //     favorites.style.justifyContent = "flex-start";
+        //     favorites.style.alignItems = "flex-start";
+        // };
+
     }
 
-}
+};
 
 
 user = new User(getCookie("username"), getCookie("email"));
-
