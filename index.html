@@ -7,14 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <title>AirShop</title>
 </head>
 
 <body>
     <header>
         <div>
-            <a
+            <a class="scroll-shop-button" onclick="document.getElementById('general-products').scrollIntoView({behavior: 'smooth'})"
                 style="cursor: pointer;" id="controller-button">shop</a>
         </div>
         <div>
@@ -25,7 +24,9 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" placeholder="Buscar...">
             </div>
-            <button class="like-btn"><i class="fa-regular fa-heart"></i></button>
+            <button class="like-btn"
+                onclick="document.getElementById('favorites').scrollIntoView({behavior: 'smooth'})"><i
+                    class="fa-regular fa-heart"></i></button>
             <button class="profile-btn"><i class="fa-regular fa-user"></i></button>
             <dialog id="dialog-messages">
                 <button class="close-button">❌</button>
@@ -34,10 +35,10 @@
                     <i class="fas fa-user-circle"></i>
                     <div>
                         <h2></h2>
-                        <!-- <p>@usuario123</p> -->
+                        <p>@usuario123</p>
                     </div>
 
-                    
+
                 </div>
                 <div class="configuration-user">
                     <button class="edit-button">Editar</button>
@@ -50,6 +51,28 @@
     </header>
 
     <main>
+
+        <section class="view-info">
+            <!-- <div class="come-back-btn"><button>come back</button></div> -->
+            <article>
+                <img src="" alt="image">
+                <div>
+                    <h2></h2>
+                    <h3></h3>
+                    <p>Color: purple</p>
+                    <div>
+                        <ul>
+                            <li class="red"></li>
+                            <li class="purple"></li>
+                            <li class="black"></li>
+                            <li class="white"></li>
+                        </ul>
+                    </div>
+                    <button class='add-to-favorite-btn'>ADD TO FAVORITE</button>
+                </div>
+            </article>
+        </section>
+
         <section class="principal">
             <div>
                 <h1></h1>
@@ -86,6 +109,8 @@
             <h2 class="title-favorites">FAVORITE PRODUCTS</h2>
 
             <div class="products-favorites">
+                <div class="no-products-message">
+                    <h3 class="no-products-text">No favorite products yet</h3>
                 <!-- <article class="product">
                     <img src="" alt="image-product">
                     <h3></h3>

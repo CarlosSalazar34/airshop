@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
         targets: "header div",
         opacity: [0, 1],
         translateY: [20, 0],
-        delay: anime.stagger(150, { start: 500 }), 
+        delay: anime.stagger(150, { start: 500 }),
         easing: "easeOutBack",
         duration: 1000
     });
@@ -114,7 +114,7 @@ async function toggleUser(id) {
 
 }
 
-document.querySelector("dialog").querySelector(".close-button").addEventListener("click", ()=>{
+document.querySelector("dialog").querySelector(".close-button").addEventListener("click", () => {
     toggleUser();
 })
 
@@ -197,6 +197,7 @@ document.querySelector(".tabs-container").querySelectorAll("button").forEach(but
 
 const main = document.querySelector("main");
 const fotter = document.querySelector("footer");
+const header = document.querySelector("header");    
 
 const initialMainContent = main.innerHTML;
 
@@ -208,40 +209,60 @@ products.forEach((product) => {
         const titleProduct = product.querySelector("h3").textContent;
         const detailsProduct = product.querySelector("p").textContent;
 
+        const viewProduct = document.querySelector(".view-info");
+
+        const sections = main.querySelectorAll("section");
+
         main.classList.add("no-see");
         fotter.classList.add("no-see");
+        header.classList.add("no-see");
+
+
+
         // fotter.classList.add("removed-footer");
         setTimeout(() => {
+            header.classList.remove("no-see");
             main.classList.remove("no-see");
-            fotter.classList.add("removed-footer");
+            fotter.style.display = "none";
+            anime({
+                targets: "header",
+                opacity: [0, 1],
+                translateY: [-50, 0],
+                scale: [0.95, 1],
+                easing: "easeOutExpo",
+                duration: 1500
+            });
+
+            anime({
+                targets: "header div",
+                opacity: [0, 1],
+                translateY: [20, 0],
+                delay: anime.stagger(150, { start: 500 }),
+                easing: "easeOutBack",
+                duration: 1000
+            });
+            sections.forEach((section) => {
+                section.style.display = "none";
+            }, 1000)
+
+            viewProduct.querySelector("img").src = imageProduct;
+            viewProduct.querySelector("h2").textContent = titleProduct;
+            viewProduct.querySelector("h3").textContent = detailsProduct;
+            viewProduct.style.display = "flex";
+            const newButton = document.querySelector(".scroll-shop-button");
+            // console.log(newButton);
+
+            newButton.classList.add("come-back-btn");
+            newButton.textContent = "come back";
+            // fotter.classList.add("removed-footer");
             // fotter.classList.add("no-see");
-            fotter.innerHTML = "";
-            main.innerHTML = `
-            <section class="view-info">
-                <div class="come-back-btn"><button>come back</button></div>
-                <article>
-                    <img src="${imageProduct}" alt="image">
-                    <div>
-                        <h2>${titleProduct}</h2>
-                        <h3>${detailsProduct}</h3>
-                        <p>Color: purple</p>
-                        <div>
-                            <ul>
-                                <li class="red"></li>
-                                <li class="purple"></li>
-                                <li class="black"></li>
-                                <li class="white"></li>
-                            </ul>
-                        </div>
-                        <button class='add-to-favorite-btn'>ADD TO FAVORITE</button>
-                    </div>
-                </article>
-            </section>
-    `;
-        
+            // fotter.innerHTML = "";
+
+            ;
 
 
-    //   main.setAttribute("style", "overflow-y: auto;")
+
+            //   main.setAttribute("style", "overflow-y: auto;")
 
             document.querySelectorAll("ul li").forEach((item) => {
                 item.addEventListener("click", () => {
@@ -253,29 +274,91 @@ products.forEach((product) => {
 
             document.querySelector(".add-to-favorite-btn").addEventListener("click", () => {
                 main.classList.add("no-see");
-                document.querySelector("header").classList.add("no-see");
+                // document.querySelector("header").classList.add("no-see");
                 // const originElement = event.currentTarget;
-                setTimeout(() => {
-                    main.classList.remove("no-see");
-                    main.innerHTML = initialMainContent;
+                newButton.classList.add("no-see");
+                user.favorites.push({
+                    image: imageProduct,
+                    title: titleProduct,
+                    description: detailsProduct
+                });
 
-                    if (!favoriteProdcuts.includes(titleProduct)) {
-                        favoriteProdcuts.push(titleProduct);
-                        localStorage.setItem("favorites", JSON.stringify(favoriteProdcuts));
-                    };
-                    location.reload();
+                user.addFavorite();
+                
+                console.log("Favoritos del usuario:", user.favorites);
+                
+                
+
+                setTimeout(() => {
+                    sections.forEach(section => {
+                        section.style.display = "flex";
+                    })
+                    main.classList.remove("no-see");
+                    newButton.classList.remove("no-see");
+                    newButton.textContent = "SHOP";
+                    // document.querySelector("header").classList.remove("no-see");
+                    viewProduct.style.display = "none";
+                    anime({
+                        targets: "header",
+                        opacity: [0, 1],
+                        translateY: [-50, 0],
+                        scale: [0.95, 1],
+                        easing: "easeOutExpo",
+                        duration: 1500
+                    });
+
+                    anime({
+                        targets: "header div",
+                        opacity: [0, 1],
+                        translateY: [20, 0],
+                        delay: anime.stagger(150, { start: 500 }),
+                        easing: "easeOutBack",
+                        duration: 1000
+                    });
+                    // if (!favoriteProdcuts.includes(titleProduct)) {
+                    //     favoriteProdcuts.push(titleProduct);
+                    //     localStorage.setItem("favorites", JSON.stringify(favoriteProdcuts));
+                    // };
+                    // location.reload();
 
                 }, 1000)
             })
 
 
-            const comeBackButton = document.querySelector(".come-back-btn button");
+            const comeBackButton = document.querySelector(".come-back-btn");
             comeBackButton.addEventListener("click", () => {
                 main.classList.add("no-see");
+                header.classList.add("no-see");
+                const sections = document.querySelectorAll("section");
                 setTimeout(() => {
+                    sections.forEach(section => {
+                        section.style.display = "flex";
+                    })
+                    anime({
+                        targets: "header",
+                        opacity: [0, 1],
+                        translateY: [-50, 0],
+                        scale: [0.95, 1],
+                        easing: "easeOutExpo",
+                        duration: 1500
+                    });
+
+                    anime({
+                        targets: "header div",
+                        opacity: [0, 1],
+                        translateY: [20, 0],
+                        delay: anime.stagger(150, { start: 500 }),
+                        easing: "easeOutBack",
+                        duration: 1000
+                    });
+                    fotter.style.display = "flex";
+                    viewProduct.style.display = "none";
+                    comeBackButton.textContent = "SHOP";
+                    fotter.classList.remove("no-see");
                     main.classList.remove("no-see");
-                    main.innerHTML = initialMainContent;
-                    location.reload();
+                    header.classList.remove("no-see");
+                    // main.innerHTML = initialMainContent;
+                    // location.reload();
 
                     // const newProducts = document.querySelectorAll(".product");
                     // newProducts.forEach((p) => {
@@ -285,6 +368,7 @@ products.forEach((product) => {
                     // });
 
                 }, 1000);
+                comeBackButton.classList.remove("come-back-btn");
             });
         }, 1000);
     });
@@ -301,17 +385,22 @@ class User {
 
     // products-favorites nombre de la clase de productos favoritos
 
-    addFavorite(product) {
-        const favoriteProdcuts = document.querySelector(".products-favorites");
-
-        favoriteProdcuts.innerHTML += `
-        
-        `;
-
+    addFavorite() {
+        const favorites = document.querySelector(".products-favorites");
+        favorites.innerHTML = "";
+        this.favorites.forEach(product => {
+            favorites.innerHTML += `
+            <article class="product">
+            <img src="${product.image}" alt="image-product">
+            <h3>${product.title}</h3>
+            <p>${product.description}</p>
+            </article>
+            `
+        });
     }
 
-    showFavorites() {
-        console.log("Favorites:", this.favorites);
-    }
 }
+
+
+user = new User(getCookie("username"), getCookie("email"));
 
